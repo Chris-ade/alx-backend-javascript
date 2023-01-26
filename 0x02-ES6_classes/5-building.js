@@ -1,22 +1,27 @@
 /* eslint no-underscore-dangle: 0 */
-function Building(sqft) {
-  if (new.target === Building) {
-    throw new Error('Cannot instantiate abstract class Building directly');
+export default class Building {
+  constructor(sqft) {
+    if (typeof sqft !== 'number') {
+      throw TypeError('Sqft must be a number');
+    }
+    if (this.constructor !== Building) {
+      if (typeof this.evacuationWarningMessage !== 'function') {
+        throw new Error(
+          'Class extending Building must override evacuationWarningMessage',
+        );
+      }
+    }
+    this._sqft = sqft;
   }
-  if (typeof sqft !== 'number') {
-    throw new Error('sqft must be a number');
-  }
-  this._sqft = sqft;
-}
 
-Object.defineProperty(Building.prototype, 'sqft', {
-  get() {
+  get sqft() {
     return this._sqft;
-  },
-});
+  }
 
-Building.prototype.evacuationWarningMessage = function () {
-  throw new Error('Class extending Building must override evacuationWarningMessage');
-};
-
-export default Building;
+  set sqft(sqft) {
+    if (typeof sqft !== 'number') {
+      throw TypeError('Sqft must be a number');
+    }
+    this._sqft = sqft;
+  }
+}
