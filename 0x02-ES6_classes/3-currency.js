@@ -1,5 +1,5 @@
 /* eslint no-underscore-dangle: 0 */
-class Currency {
+export default class Currency {
   constructor(code, name) {
     this._code = code;
     this._name = name;
@@ -25,5 +25,3 @@ class Currency {
     return `${this._name} (${this._code})`;
   }
 }
-
-export { Currency as default, Currency };

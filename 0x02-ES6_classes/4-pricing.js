@@ -1,7 +1,7 @@
 /* eslint no-underscore-dangle: 0 */
 import Currency from './3-currency';
 
-class Pricing {
+export default class Pricing {
   constructor(amount, currency) {
     if (typeof amount !== 'number') {
       throw new Error('amount must be a number');
@@ -46,4 +46,3 @@ class Pricing {
     return amount * conversionRate;
   }
 }
-export { Pricing as default, Pricing }
