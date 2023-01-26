@@ -1,29 +1,14 @@
 /* eslint no-underscore-dangle: 0 */
-class Airport {
+export default class Airport {
   constructor(name, code) {
+    if (typeof name !== 'string' || typeof code !== 'string') {
+      throw TypeError('Name or Code must be a string');
+    }
     this._name = name;
     this._code = code;
   }
 
-  get name() {
-    return this._name;
-  }
-
-  set name(value) {
-    this._name = value;
-  }
-
-  get code() {
+  get [Symbol.toStringTag]() {
     return this._code;
   }
-
-  set code(value) {
-    this._code = value;
-  }
-
-  toString() {
-    return `Airport [${this._code}] { _name: '${this._name}', _code: '${this._code}' }`;
-  }
 }
-
-export default Airport;
