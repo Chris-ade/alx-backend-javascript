@@ -1,4 +1,5 @@
-class HolbertonCourse {
+/* eslint no-underscore-dangle: 0 */
+export default class HolbertonCourse {
   constructor(name, length, students) {
     if (typeof name !== 'string') {
       throw new Error('name must be a string');
