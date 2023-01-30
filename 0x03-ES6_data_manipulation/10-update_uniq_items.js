@@ -1,14 +1,9 @@
 export default function updateUniqueItems(map) {
-  if (!(map instanceof Map)) {
-    throw new Error("Cannot process");
-  }
-  let updatedMap = new Map();
-  for (let [name, quantity] of map) {
-    if (quantity === 1) {
-      updatedMap.set(name, 100);
-    } else {
-      updatedMap.set(name, quantity);
+  if (!(map instanceof Map)) throw new Error('Cannot process');
+  for (const [k, v] of map.entries()) {
+    if (v === 1) {
+      // eslint-disable-next-line no-param-reassign
+      map.set(k, 100);
     }
   }
-  return updatedMap;
 }
